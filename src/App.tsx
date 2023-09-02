@@ -1,25 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useRef, useState } from "react";
+import Moveable from "react-moveable";
+import "./styles.css";
+
+import "./App.css";
 
 function App() {
+  const targetRef = useRef<HTMLDivElement>(null);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="target" ref={targetRef}>
+        <img
+          width="200"
+          height="200"
+          src="https://via.placeholder.com/200x200.png?text=Move+me!"
+          alt=""
+        />
+      </div>
+      <Moveable
+        target={targetRef}
+        draggable={true}
+        throttleDrag={1}
+        edgeDraggable={false}
+        startDragRotate={0}
+        throttleDragRotate={0}
+        onDrag={(e) => {
+          e.target.style.transform = e.transform;
+        }}
+      />
+    </>
   );
 }
 
