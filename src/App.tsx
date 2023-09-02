@@ -1,35 +1,46 @@
-import React from "react";
-import { useRef, useState } from "react";
+import React, { useRef } from "react";
 import Moveable from "react-moveable";
 import "./styles.css";
 
 import "./App.css";
 
 function App() {
-  const targetRef = useRef<HTMLDivElement>(null);
+  const moveableRef = useRef<Moveable>(null);
 
   return (
-    <>
-      <div className="target" ref={targetRef}>
-        <img
-          width="200"
-          height="200"
-          src="https://via.placeholder.com/200x200.png?text=Move+me!"
-          alt=""
-        />
-      </div>
+    <div className="root">
+      <img
+        src="https://via.placeholder.com/200x200.png?text=Move+me!"
+        className="target"
+        alt=""
+      />
+
       <Moveable
-        target={targetRef}
+        ref={moveableRef}
+        target={".target"}
         draggable={true}
         throttleDrag={1}
-        edgeDraggable={false}
+        edgeDraggable={true}
         startDragRotate={0}
         throttleDragRotate={0}
-        onDrag={(e) => {
-          e.target.style.transform = e.transform;
+        resizable={true}
+        keepRatio={false}
+        throttleResize={1}
+        renderDirections={["nw", "n", "ne", "w", "e", "sw", "s", "se"]}
+        rotatable={true}
+        throttleRotate={0}
+        rotationPosition={"top"}
+        onDrag={({ target, transform }) => {
+          target.style.transform = transform;
+        }}
+        onResize={({ target, width, height, drag }) => {
+          target.style.width = `${width}px`;
+          target.style.height = `${height}px`;
+          console.log(width);
+          target.style.transform = drag.transform;
         }}
       />
-    </>
+    </div>
   );
 }
 

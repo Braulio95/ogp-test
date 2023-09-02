@@ -1,6 +1,7 @@
-.target {
+.root {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  margin-inline: 0;
+  padding-inline: 0;
 }
