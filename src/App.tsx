@@ -39,9 +39,6 @@ function App() {
           console.log(width);
           target.style.transform = drag.transform;
         }}
-        onRotate={({ target, drag }) => {
-          target.style.transform = drag.transform;
-        }}
       />
     </div>
   );
