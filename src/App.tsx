@@ -1,12 +1,10 @@
-import React from "react";
-import { useRef } from "react";
+import React, { useRef } from "react";
 import Moveable from "react-moveable";
 import "./styles.css";
 
 import "./App.css";
 
 function App() {
-  const targetRef = useRef<HTMLDivElement>(null);
   const moveableRef = useRef<Moveable>(null);
 
   return (
@@ -32,16 +30,17 @@ function App() {
         rotatable={true}
         throttleRotate={0}
         rotationPosition={"top"}
-        onDrag={(e) => {
-          e.target.style.transform = e.transform;
+        onDrag={({ target, transform }) => {
+          target.style.transform = transform;
         }}
-        onResize={(e) => {
-          e.target.style.width = `${e.width}px`;
-          e.target.style.height = `${e.height}px`;
-          e.target.style.transform = e.drag.transform;
+        onResize={({ target, width, height, drag }) => {
+          target.style.width = `${width}px`;
+          target.style.height = `${height}px`;
+          console.log(width);
+          target.style.transform = drag.transform;
         }}
-        onRotate={(e) => {
-          e.target.style.transform = e.drag.transform;
+        onRotate={({ target, drag }) => {
+          target.style.transform = drag.transform;
         }}
       />
     </div>
