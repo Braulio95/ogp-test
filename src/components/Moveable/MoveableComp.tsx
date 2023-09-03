@@ -5,7 +5,7 @@ import { MoveableCompProps } from "../../types/MoveableCompProps";
 const MoveableComp = ({ image }: MoveableCompProps) => {
   const moveableRef = useRef<Moveable>(null);
   return (
-    <div className="root">
+    <div className="container">
       <img src={image} className="target" alt="" />
 
       <Moveable
