@@ -1,8 +1,7 @@
 const enum colorPalette {
     // Main  Colors
-    primaryBlue = '#2A5BDF', // Define a specific shade of blue for the primary color
+    primaryGreen = '#758467', // Define a specific shade of blue for the primary color
     backgroundWhite = '#FFFF', // Define white as a background color
-    backgroundBlue = '#F9FBFF', // Define a light blue as another background color
     paragraph = '#474748', // Define a color for paragraphs
     accentBlue1 = '#ECF1FD',
     accentPurple = '#9240B9',

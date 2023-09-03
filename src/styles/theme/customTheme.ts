@@ -37,7 +37,7 @@ export const theme = createTheme({
     palette: {
         // Customize the primary color to use a specific shade of blue
         primary: {
-            main: colors.colorPalette.primaryBlue,
+            main: colors.colorPalette.primaryGreen,
         },
         action: {
             disabled: colors.colorPalette.disabledGray2,
@@ -189,8 +189,8 @@ export const theme = createTheme({
                         border: `${Spacings.spacing2}px solid ${colors.colorPalette.focusPurple}`,
                     },
                     '&.Mui-selected': {
-                        borderBottom: `${Spacings.spacing2}px solid ${colors.colorPalette.primaryBlue}`,
-                        color: colors.colorPalette.primaryBlue,
+                        borderBottom: `${Spacings.spacing2}px solid ${colors.colorPalette.primaryGreen}`,
+                        color: colors.colorPalette.primaryGreen,
                         fontWeight: 500,
                     },
                 },
@@ -211,7 +211,7 @@ export const theme = createTheme({
                     height: Spacings.spacing13,
                     paddingInline: Spacings.spacing14,
                     backgroundColor: colors.colorPalette.backgroundWhite,
-                    color: colors.colorPalette.primaryBlue,
+                    color: colors.colorPalette.primaryGreen,
                 },
             },
         },

@@ -8,6 +8,7 @@ import { Home } from "./modules/Home/Home";
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import { Playground } from "./modules/Playground/Playground";
 import { Description } from "./modules/Description/Description";
+import "./styles/styles.css";
 
 function App() {
   const { HOME, PLAYGROUND, DESCRIPTION } = MAIN_ROUTES;
