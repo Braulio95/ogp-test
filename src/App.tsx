@@ -7,6 +7,7 @@ import { theme } from "./styles/theme/customTheme";
 import { Home } from "./modules/Home/Home";
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import { Playground } from "./modules/Playground/Playground";
+import { Description } from "./modules/Description/Description";
 
 function App() {
   const { HOME, PLAYGROUND, DESCRIPTION } = MAIN_ROUTES;
@@ -35,6 +36,7 @@ function App() {
           <Routes>
             <Route element={<Home />} index />
             <Route element={<Playground />} path={PLAYGROUND} />
+            <Route element={<Description />} path={DESCRIPTION} />
           </Routes>
         </Router>
         <BottomNavigation showLabels>
