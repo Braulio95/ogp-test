@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { MAIN_ROUTES } from "./constants/routes";
 import { NavBar } from "./components/NavBar/NavBar";
@@ -6,10 +6,10 @@ import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./styles/theme/customTheme";
 import { Home } from "./modules/Home/Home";
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
+import { Playground } from "./modules/Playground/Playground";
 
 function App() {
-  const [imageURL, setImageURL] = useState("");
-  const { HOME, JOBS, CANDIDATES, USERS } = MAIN_ROUTES;
+  const { HOME, PLAYGROUND, DESCRIPTION } = MAIN_ROUTES;
   const navTabs = [
     {
       id: 1,
@@ -18,25 +18,15 @@ function App() {
     },
     {
       id: 2,
-      label: "Jobs",
-      routePath: JOBS,
+      label: "Playground",
+      routePath: PLAYGROUND,
     },
     {
       id: 3,
-      label: "Candidates",
-      routePath: CANDIDATES,
-    },
-    {
-      id: 4,
-      label: "Users",
-      routePath: USERS,
+      label: "Description",
+      routePath: DESCRIPTION,
     },
   ];
-  useEffect(() => {
-    // Cuando el componente se monta, establece la URL de la imagen
-    setImageURL("https://via.placeholder.com/200x200.png?text=Move+me");
-  }, [imageURL]);
-  console.log(imageURL);
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
@@ -44,6 +34,7 @@ function App() {
           <NavBar pageName="Test" tabItems={navTabs} />
           <Routes>
             <Route element={<Home />} index />
+            <Route element={<Playground />} path={PLAYGROUND} />
           </Routes>
         </Router>
         <BottomNavigation showLabels>
