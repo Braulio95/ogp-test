@@ -11,15 +11,6 @@ export const NavBar = ({ pageName, tabItems }: NavBarProps) => {
   const location = useLocation();
   const optionsHierarchy = Hierarchies[Hierarchy.Hierarchy4];
 
-  useEffect(() => {
-    if (tabItems && tabItems.length) {
-      const activeTabIndex = tabItems.findIndex(
-        (tab) => tab.routePath === location.pathname
-      );
-      setActiveTab(activeTabIndex + 1);
-    }
-  }, [location.pathname, tabItems]);
-
   const handleKeyDown = (
     event: KeyboardEvent<HTMLAnchorElement>,
     tabIndex: number
@@ -28,6 +19,15 @@ export const NavBar = ({ pageName, tabItems }: NavBarProps) => {
       setActiveTab(tabIndex);
     }
   };
+
+  useEffect(() => {
+    if (tabItems && tabItems.length) {
+      const activeTabIndex = tabItems.findIndex(
+        (tab) => tab.routePath === location.pathname
+      );
+      setActiveTab(activeTabIndex + 1);
+    }
+  }, [location.pathname, tabItems]);
 
   return (
     <AppBar

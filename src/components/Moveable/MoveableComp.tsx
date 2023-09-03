@@ -2,14 +2,26 @@ import React, { useRef, Children, cloneElement } from "react";
 import Moveable from "react-moveable";
 import { MoveableCompProps } from "../../types/MoveableCompProps";
 
-const MoveableComp = ({ children, image }: MoveableCompProps) => {
+const MoveableComp = ({
+  children,
+  image,
+  target,
+  position,
+  size,
+  onResizeHandler,
+}: MoveableCompProps) => {
   const moveableRef = useRef<Moveable>(null);
 
   const addClassListToElements = () => {
-    return Children.map(children, (child, index) => {
-      // If there's no key it will assing one
+    return Children.map(children, (child) => {
+      const childStyle = {
+        ...child.props.style,
+        ...position,
+        ...size,
+      };
       const childWithProps = cloneElement(child, {
-        className: `target`,
+        className: `${target}`,
+        style: childStyle,
         src: child.type === "img" ? image : undefined,
       });
 
@@ -30,7 +42,7 @@ const MoveableComp = ({ children, image }: MoveableCompProps) => {
         //This prop allows to manage a lot of elements with a single moveable object
         individualGroupable={isGroupable()}
         //This prop links the moveable component to all elements with the class target
-        target={".target"}
+        target={`.${target}`}
         draggable={true}
         throttleDrag={1}
         edgeDraggable={true}
@@ -46,11 +58,7 @@ const MoveableComp = ({ children, image }: MoveableCompProps) => {
         onDrag={({ target, transform }) => {
           target.style.transform = transform;
         }}
-        onResize={({ target, width, height, drag }) => {
-          target.style.width = `${width}px`;
-          target.style.height = `${height}px`;
-          target.style.transform = drag.transform;
-        }}
+        onResize={onResizeHandler}
       />
     </div>
   );
