@@ -1,26 +1,35 @@
-import React, { useRef } from "react";
+import React, { useRef, Children, cloneElement } from "react";
 import Moveable from "react-moveable";
 import { MoveableCompProps } from "../../types/MoveableCompProps";
 
-const MoveableComp = ({ children }: MoveableCompProps) => {
+const MoveableComp = ({ children, image }: MoveableCompProps) => {
   const moveableRef = useRef<Moveable>(null);
 
   const addClassListToElements = () => {
-    return React.Children.map(children, (child, index) => {
-      return React.cloneElement(child, {
+    return Children.map(children, (child, index) => {
+      // If there's no key it will assing one
+      const childWithProps = cloneElement(child, {
         className: `target`,
-        key: index, // Unique keys
+        src: child.type === "img" ? image : undefined,
       });
+
+      return childWithProps;
     });
   };
+
+  const isGroupable = () => {
+    //checks if the input array has more than one element and if so it will be set to true, if not it will go to false
+    return Children.count(children) > 1;
+  };
+
   return (
-    <div className="container">
-      {addClassListToElements().map((child) => {
-        return <div>{child}</div>;
-      })}
+    <div className="container" style={{ width: "100%", height: "80vh" }}>
+      {addClassListToElements().map((child) => child)}
       <Moveable
         ref={moveableRef}
-        individualGroupable={true}
+        //This prop allows to manage a lot of elements with a single moveable object
+        individualGroupable={isGroupable()}
+        //This prop links the moveable component to all elements with the class target
         target={".target"}
         draggable={true}
         throttleDrag={1}

@@ -4,15 +4,13 @@ import MoveableComp from "../../components/Moveable/MoveableComp";
 import { Grid } from "@mui/material";
 import { assignUniqueKeys } from "../../utils/assignUniqueKeys";
 
-export const Home = () => {
-  const elements = [<img alt="" />];
+export const Playground = () => {
+  const elements = [<div>Hola mundo</div>, <div>Hola mundo</div>];
+
   return (
-    <Layout title="Main Page: Movable Image">
+    <Layout title="Playground: Other cases testing">
       <Grid item md={1}>
-        <MoveableComp
-          image="https://via.placeholder.com/200x200.png?text=Move+me!"
-          children={assignUniqueKeys(elements)}
-        />
+        <MoveableComp children={assignUniqueKeys(elements)} />
       </Grid>
     </Layout>
   );
