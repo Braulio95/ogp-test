@@ -5,6 +5,14 @@ import { Hierarchies, Hierarchy } from "../../styles/partials/hierarchies";
 import { Spacings } from "../../styles/partials/spacings";
 import { NavBarProps } from "../../types/NavBarProps";
 
+/**
+ * Represents a navigation bar component.
+ *
+ * @param pageName - The name of the current page.
+ * @param tabItems - An array of tab items for rendering navigation tabs.(Optional)
+ *                   Each tab item should have an `id`, `label`, and `routePath`.
+ */
+
 export const NavBar = ({ pageName, tabItems }: NavBarProps) => {
   const [activeTab, setActiveTab] = useState<number | null>(null);
   const tabRefs = useRef<(HTMLAnchorElement | null)[]>([]);
