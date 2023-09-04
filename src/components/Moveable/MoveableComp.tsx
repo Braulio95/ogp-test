@@ -22,7 +22,7 @@ const MoveableComp = ({
   onResizeHandler,
 }: MoveableCompProps) => {
   const moveableRef = useRef<Moveable>(null);
-
+  //We use this function to map the children array and set them the styles that they initially have and styles gotten by props
   const addClassListToElements = () => {
     return Children.map(children, (child) => {
       const childStyle = {
@@ -30,9 +30,11 @@ const MoveableComp = ({
         ...position,
         ...size,
       };
+      //here we set the class name wich is important cause is the main reference
       const childWithProps = cloneElement(child, {
         className: `${target}`,
         style: childStyle,
+        //if the element is type img, then the image link will be added in the src prop, otherwise it will be undefined
         src: child.type === "img" ? image : undefined,
       });
 

@@ -11,12 +11,14 @@ export const Home = () => {
   const [position, setPosition] = useState({ top: "20px", left: "30px" });
   const [size, setSize] = useState({ width: "", height: "" });
 
+  //This handler allows the size changes
   const onResizeHandler = ({ target, width, height, drag }: OnResize) => {
     target.style.width = `${width}px`;
     target.style.height = `${height}px`;
+    //Sets the transform property wich allows to change visuals of an element like size or position
     target.style.transform = drag.transform;
   };
-
+  //This handler allows the movement of some element
   const onDragHandler = ({ target, transform }: OnDrag) => {
     target.style.transform = transform;
   };

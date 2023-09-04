@@ -14,11 +14,13 @@ import { NavBarProps } from "../../types/NavBarProps";
  */
 
 export const NavBar = ({ pageName, tabItems }: NavBarProps) => {
+  //Setting state variables for the tabs
   const [activeTab, setActiveTab] = useState<number | null>(null);
   const tabRefs = useRef<(HTMLAnchorElement | null)[]>([]);
   const location = useLocation();
   const optionsHierarchy = Hierarchies[Hierarchy.Hierarchy4];
 
+  //Function that allows the tabs to work with Enter key
   const handleKeyDown = (
     event: KeyboardEvent<HTMLAnchorElement>,
     tabIndex: number
@@ -29,10 +31,18 @@ export const NavBar = ({ pageName, tabItems }: NavBarProps) => {
   };
 
   useEffect(() => {
+    // This effect will run when there are changes in location.pathname or tabItems.
+
     if (tabItems && tabItems.length) {
+      // Check if tabItems exist and there is at least one item in the list.
+
+      // Find the index of the tab that matches the current route (location.pathname).
       const activeTabIndex = tabItems.findIndex(
         (tab) => tab.routePath === location.pathname
       );
+
+      // Set the state activeTab to the index of the active tab + 1.
+      // +1 because the values for Tabs should be 1-based nor 0 like arrays.
       setActiveTab(activeTabIndex + 1);
     }
   }, [location.pathname, tabItems]);
