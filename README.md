@@ -1,8 +1,11 @@
 # Welcome to this React test!!!
 
 ## Available Scripts
+first install all the dependencies needed with:
 
-In the project directory, you can run:
+### `npm install`
+
+Then, you can run:
 
 ### `npm start`
 
