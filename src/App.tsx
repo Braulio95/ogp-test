@@ -34,7 +34,7 @@ function App() {
         <Router>
           <NavBar pageName="Test" tabItems={navTabs} />
           <Routes>
-            <Route element={<Home />} index />
+            <Route element={<Home />} path={HOME} />
             <Route element={<Playground />} path={PLAYGROUND} />
             <Route element={<Description />} path={DESCRIPTION} />
           </Routes>
